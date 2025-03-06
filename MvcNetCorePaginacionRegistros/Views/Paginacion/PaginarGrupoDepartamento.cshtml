@@ -1,7 +1,7 @@
-﻿@model List<VistaDepartamento>
+﻿@model List<Departamento>
 
 @{
-	ViewData["Title"] = "PaginarGrupoVistaDepartamento";
+	ViewData["Title"] = "PaginarGrupoDepartamento";
 }
 
 @{
@@ -9,14 +9,15 @@
 	int numRegistros = (int)ViewData["REGISTROS"];
 }
 
-<h1>Paginar Grupo VistaDepartamento</h1>
+<h1 style="color:cyan">Paginar Grupo Departamento</h1>
 
 <ul class="list-group list-group-horizontal">
-	@for(int i = 1; i<= numRegistros; i+=2){
+	@for (int i = 1; i <= numRegistros; i += 2)
+	{
 		<li class="list-group list-group-item-success">
 			<a asp-controller="Paginacion"
-			asp-action="PaginarGrupoVistaDepartamento"
-			asp-route-posicion="@i">
+			   asp-action="PaginarGrupoDepartamento"
+			   asp-route-posicion="@i">
 				Página @numPagina
 			</a>
 		</li>
@@ -25,16 +26,15 @@
 </ul>
 
 <hr />
-	@Html.Raw(@ViewData["LINKS"])
+@Html.Raw(@ViewData["LINKS"])
 <hr />
-<a href="PaginarGrupoVistaDepartamento?posicion=1">Página 1</a>
-<a href="PaginarGrupoVistaDepartamento?posicion=3">Página 2</a>
+<a href="PaginarGrupoDepartamento?posicion=1">Página 1</a>
+<a href="PaginarGrupoDepartamento?posicion=3">Página 2</a>
 
 
-<table  class ="table  table-warning">
+<table  class="table  table-warning table-warning">
 	<thead>
 		<tr>
-			<th>POSICION</th>
 			<th>ID</th>
 			<th>NOMBRE</th>
 			<th>LOCALIDAD</th>
@@ -44,7 +44,6 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td>@item.Posicion</td>
 				<td>@item.IdDepartamento</td>
 				<td>@item.Nombre</td>
 				<td>@item.Localidad</td>
